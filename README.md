@@ -1,2 +1,244 @@
-# Portofolio
-About me
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faliq Ajrun Widriadi | Full Stack Developer</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background:#050505; color:#e2e8f0; overflow-x:hidden; }
+        .font-cyber{font-family:'Space Grotesk',sans-serif}
+
+        /* === spotlight === */
+        .spotlight{ position:fixed;inset:0;pointer-events:none;z-index:50; background:radial-gradient(circle 150px at var(--x) var(--y), rgba(59,130,246,.15),transparent 80%); }
+
+        /* === glass === */
+        .glass-card{ background:rgba(15,15,20,.7); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.1); transition:.4s cubic-bezier(.175,.885,.32,1.275); }
+        .glass-card:hover{ transform:translateY(-8px) scale(1.02); border-color:#3b82f6; box-shadow:0 20px 40px rgba(59,130,246,.25); }
+
+        /* === FLOAT === */
+        @keyframes floatSlow{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        .animate-float-slow{animation:floatSlow 4s ease-in-out infinite}
+        .delay-1{animation-delay:0.5s}
+        .delay-2{animation-delay:1s}
+        .delay-3{animation-delay:1.5s}
+
+        /* === CYBER BORDER (Rotating) === */
+        .cyber-box{ position:relative; border-radius:1.25rem; padding:2px; overflow:hidden; display: flex; justify-content: center; align-items: center; }
+        .cyber-box::before{ content:""; position:absolute; width: 150%; height: 150%; background:conic-gradient(from 0deg, transparent, transparent, transparent, #3b82f6); animation:spin 4s linear infinite; }
+        .cyber-box::after{ content:""; position:absolute; inset:2px; background:#050505; border-radius:1.2rem; z-index:1; }
+        .cyber-content{position:relative; z-index:2; padding: 2rem 1rem; width: 100%;}
+        
+        .stat-glow { filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.4)); }
+        @keyframes spin{to{transform:rotate(360deg)}}
+
+        /* === SCROLL ANIMATION === */
+        @keyframes scroll { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(-50%); } 
+        }
+
+        .animate-scroll { 
+            display: flex; 
+            width: max-content; 
+            animation: scroll 45s linear infinite; 
+        }
+
+        .animate-scroll:hover { animation-play-state: paused; }
+
+        /* EFEK FADE DI PINGGIR */
+        .feedback-container::before,
+        .feedback-container::after {
+            content: ""; position: absolute; top: 0; width: 250px; height: 100%; z-index: 10; pointer-events: none;
+        }
+        .feedback-container::before { left: 0; background: linear-gradient(to right, #050505, transparent); }
+        .feedback-container::after { right: 0; background: linear-gradient(to left, #050505, transparent); }
+
+        /* === marquee === */
+        @keyframes marquee{ 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        .animate-marquee{ animation:marquee 30s linear infinite; display:flex; width:max-content; }
+        .text-glow { text-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
+    </style>
+</head>
+
+<body x-data="{scrolled:false}" @scroll.window="scrolled=window.pageYOffset>50" @mousemove="document.documentElement.style.setProperty('--x',$event.clientX+'px');document.documentElement.style.setProperty('--y',$event.clientY+'px')">
+
+<div class="spotlight hidden md:block"></div>
+
+<nav class="fixed w-full z-50 px-6 py-4 transition-all" :class="scrolled?'bg-black/80 backdrop-blur border-b border-white/10':''">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <span class="font-cyber text-blue-500 font-bold tracking-widest text-xl">My Portofolio</span>
+        <div class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest">
+            <a href="#about" class="hover:text-blue-400 transition-colors">Tentang</a>
+            <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
+            <a href="#projects" class="hover:text-blue-400 transition-colors">Proyek</a>
+            <a href="#contact" class="hover:text-blue-400 transition-colors">Kontak</a>
+        </div>
+    </div>
+</nav>
+
+<section class="h-screen flex items-center justify-center px-6">
+    <div class="text-center" data-aos="fade-up">
+        <h2 class="text-blue-500 font-cyber tracking-[0.3em] mb-4 text-sm uppercase text-glow"><span id="typing-text"></span></h2>
+        <h1 class="text-6xl md:text-9xl font-cyber font-bold mb-6">
+            Faliq Ajrun <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Widriadi</span>
+        </h1>
+        <p class="text-gray-400 max-w-xl mx-auto mb-10 text-lg leading-relaxed">Membangun ekosistem digital melalui kode, riset, dan strategi.</p>
+        <div class="flex justify-center gap-4">
+            <a href="#projects" class="px-8 py-3 bg-blue-600 rounded-full font-bold hover:scale-105 transition-transform shadow-[0_0_20px_rgba(37,99,235,0.3)]">Eksplorasi</a>
+            <a href="mailto:faliqajrunwidriadi@gmail.com" class="px-8 py-3 border border-white/20 rounded-full font-bold hover:bg-white/5 transition-all">Diskusi</a>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="py-20" x-data="{ j:0,l:0,t:0,r:0, start(){ this.c(0,100,v=>this.j=v); this.c(0,500,v=>this.l=v); this.c(0,10,v=>this.t=v); this.c(0,99,v=>this.r=v); }, c(s,e,cb){ let st=null; const step=t=>{ if(!st)st=t; let p=Math.min((t-st)/2000,1); cb(Math.floor(p*(e-s)+s)); if(p<1)requestAnimationFrame(step); }; requestAnimationFrame(step); } }" x-intersect.once="start()">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center font-cyber">
+        <div class="cyber-box stat-glow" data-aos="zoom-in"><div class="cyber-content"><h3 class="text-5xl text-blue-400 font-bold" x-text="j+'+'"></h3><p class="text-gray-500 text-xs tracking-widest mt-2">JURNAL</p></div></div>
+        <div class="cyber-box stat-glow" data-aos="zoom-in" data-aos-delay="100"><div class="cyber-content"><h3 class="text-5xl text-blue-400 font-bold" x-text="l+'+'"></h3><p class="text-gray-500 text-xs tracking-widest mt-2">LOA DIGITAL</p></div></div>
+        <div class="cyber-box stat-glow" data-aos="zoom-in" data-aos-delay="200"><div class="cyber-content"><h3 class="text-5xl text-blue-400 font-bold" x-text="t+'+'"></h3><p class="text-gray-500 text-xs tracking-widest mt-2">TECH STACK</p></div></div>
+        <div class="cyber-box stat-glow" data-aos="zoom-in" data-aos-delay="300"><div class="cyber-content"><h3 class="text-5xl text-blue-400 font-bold" x-text="r+'%'"></h3><p class="text-gray-500 text-xs tracking-widest mt-2">TRUST RATE</p></div></div>
+    </div>
+</section>
+
+<section id="skills" class="py-24 bg-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-cyber font-bold mb-16 text-white" data-aos="fade-right">My <span class="text-blue-500">Skills</span></h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="glass-card p-6 rounded-2xl flex items-center gap-5 animate-float-slow">
+                <div class="w-12 h-12 flex items-center justify-center bg-orange-500/10 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-8 h-8"></div>
+                <div><h4 class="font-bold text-sm text-white uppercase">HTML 5</h4><p class="text-[9px] text-blue-500 font-bold">ESSENTIAL</p></div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl flex items-center gap-5 animate-float-slow delay-1">
+                <div class="w-12 h-12 flex items-center justify-center bg-blue-500/10 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-8 h-8"></div>
+                <div><h4 class="font-bold text-sm text-white uppercase">CSS 3</h4><p class="text-[9px] text-blue-500 font-bold">STYLING</p></div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl flex items-center gap-5 animate-float-slow delay-2">
+                <div class="w-12 h-12 flex items-center justify-center bg-yellow-500/10 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" class="w-8 h-8"></div>
+                <div><h4 class="font-bold text-sm text-white uppercase">JavaScript</h4><p class="text-[9px] text-yellow-500 font-bold">LOGIC</p></div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl flex items-center gap-5 animate-float-slow delay-3">
+                <div class="w-12 h-12 flex items-center justify-center bg-blue-600/10 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-8 h-8"></div>
+                <div><h4 class="font-bold text-sm text-white uppercase">Python</h4><p class="text-[9px] text-blue-500 font-bold">AUTOMATION</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="py-32">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-cyber font-bold mb-20 text-center" data-aos="fade-up">Proyek <span class="text-blue-500 underline underline-offset-8">Unggulan</span></h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <a href="https://zenodo.org/communities/international-lesson-community/" target="_blank" class="group glass-card p-10 rounded-[2rem] block" data-aos="fade-up">
+                <div class="text-6xl mb-8 group-hover:scale-110 transition-transform">📚</div>
+                <h3 class="text-2xl font-bold mb-4 group-hover:text-blue-400">Lesson Community</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Manajemen publikasi ilmiah profesional terintegrasi Zenodo.</p>
+                <div class="text-blue-500 font-bold text-xs uppercase tracking-widest">Buka Arsip &rarr;</div>
+            </a>
+            <a href="https://apji.org/" target="_blank" class="group glass-card p-10 rounded-[2rem] block" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-6xl mb-8 group-hover:scale-110 transition-transform">🌐</div>
+                <h3 class="text-2xl font-bold mb-4 group-hover:text-cyan-400">Portal APJI</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Sistem institusi akademik dengan desain responsif tinggi.</p>
+                <div class="text-cyan-500 font-bold text-xs uppercase tracking-widest">Buka Portal &rarr;</div>
+            </a>
+            <a href="https://researchhub.id/index.php/Khatulistiwa" target="_blank" class="group glass-card p-10 rounded-[2rem] block" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-6xl mb-8 group-hover:scale-110 transition-transform">🔑</div>
+                <h3 class="text-2xl font-bold mb-4 group-hover:text-indigo-400">LOA Digital</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Otomasi verifikasi naskah dan penerbitan Letter of Acceptance.</p>
+                <div class="text-indigo-500 font-bold text-xs uppercase tracking-widest">Lihat Sistem &rarr;</div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-black/30 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 mb-16 text-center">
+        <h2 class="text-4xl font-cyber font-bold" data-aos="fade-up">
+            Client <span class="text-blue-500">Feedback</span>
+        </h2>
+    </div>
+    
+    <div class="feedback-container relative flex items-center">
+        <div class="animate-scroll">
+            <div class="w-[380px] glass-card p-8 rounded-2xl mx-4 flex flex-col justify-between">
+                <p class="text-gray-400 italic mb-8">"Sangat puas dengan hasilnya. Animasi web yang smooth membuat brand kami terlihat premium."</p>
+                <div class="flex items-center gap-4 border-t border-white/10 pt-6"><div class="w-10 h-10 rounded-full bg-emerald-500 shadow-[0_0_15px_#10b981]"></div><h4 class="font-bold text-sm tracking-widest uppercase text-white">Rin** M*****</h4></div>
+            </div>
+            <div class="w-[380px] glass-card p-8 rounded-2xl mx-4 flex flex-col justify-between">
+                <p class="text-gray-400 italic mb-8">"Kode yang bersih dan mudah di-maintain. Sangat profesional dalam pengerjaan sistem digital."</p>
+                <div class="flex items-center gap-4 border-t border-white/10 pt-6"><div class="w-10 h-10 rounded-full bg-orange-500 shadow-[0_0_15px_#f59e0b]"></div><h4 class="font-bold text-sm tracking-widest uppercase text-white">Dav** T**</h4></div>
+            </div>
+            <div class="w-[380px] glass-card p-8 rounded-2xl mx-4 flex flex-col justify-between">
+                <p class="text-gray-400 italic mb-8">"Website sangat cepat dan desainnya futuristik. Faliq sangat paham tren UI/UX terbaru."</p>
+                <div class="flex items-center gap-4 border-t border-white/10 pt-6"><div class="w-10 h-10 rounded-full bg-purple-500 shadow-[0_0_15px_#a855f7]"></div><h4 class="font-bold text-sm tracking-widest uppercase text-white">Bud* S******</h4></div>
+            </div>
+            <div class="w-[380px] glass-card p-8 rounded-2xl mx-4 flex flex-col justify-between">
+                <p class="text-gray-400 italic mb-8">"Integrasi AI yang dikerjakan sangat membantu efisiensi kerja tim kami. Sangat solutif!"</p>
+                <div class="flex items-center gap-4 border-t border-white/10 pt-6"><div class="w-10 h-10 rounded-full bg-blue-500 shadow-[0_0_15px_#3b82f6]"></div><h4 class="font-bold text-sm tracking-widest uppercase text-white">An** W*******</h4></div>
+            </div>
+            <div class="w-[380px] glass-card p-8 rounded-2xl mx-4 flex flex-col justify-between">
+                <p class="text-gray-400 italic mb-8">"LOA Digital sistemnya stabil banget. Memudahkan proses verifikasi naskah secara otomatis."</p>
+                <div class="flex items-center gap-4 border-t border-white/10 pt-6"><div class="w-10 h-10 rounded-full bg-pink-500 shadow-[0_0_15px_#ec4899]"></div><h4 class="font-bold text-sm tracking-widest uppercase text-white">Siti K*******</h4></div>
+            </div>
+            <div class="w-[380px] glass-card p-8 rounded-2xl mx-4 flex flex-col justify-between">
+                <p class="text-gray-400 italic mb-8">"Sangat puas dengan hasilnya. Animasi web yang smooth membuat brand kami terlihat premium."</p>
+                <div class="flex items-center gap-4 border-t border-white/10 pt-6"><div class="w-10 h-10 rounded-full bg-emerald-500 shadow-[0_0_15px_#10b981]"></div><h4 class="font-bold text-sm tracking-widest uppercase text-white">Rin** M*****</h4></div>
+            </div>
+            <div class="w-[380px] glass-card p-8 rounded-2xl mx-4 flex flex-col justify-between">
+                <p class="text-gray-400 italic mb-8">"Kode yang bersih dan mudah di-maintain. Sangat profesional dalam pengerjaan sistem digital."</p>
+                <div class="flex items-center gap-4 border-t border-white/10 pt-6"><div class="w-10 h-10 rounded-full bg-orange-500 shadow-[0_0_15px_#f59e0b]"></div><h4 class="font-bold text-sm tracking-widest uppercase text-white">Dav** T**</h4></div>
+            </div>
+            <div class="w-[380px] glass-card p-8 rounded-2xl mx-4 flex flex-col justify-between">
+                <p class="text-gray-400 italic mb-8">"Website sangat cepat dan desainnya futuristik. Faliq sangat paham tren UI/UX terbaru."</p>
+                <div class="flex items-center gap-4 border-t border-white/10 pt-6"><div class="w-10 h-10 rounded-full bg-purple-500 shadow-[0_0_15px_#a855f7]"></div><h4 class="font-bold text-sm tracking-widest uppercase text-white">Bud* S******</h4></div>
+            </div>
+            <div class="w-[380px] glass-card p-8 rounded-2xl mx-4 flex flex-col justify-between">
+                <p class="text-gray-400 italic mb-8">"Integrasi AI yang dikerjakan sangat membantu efisiensi kerja tim kami. Sangat solutif!"</p>
+                <div class="flex items-center gap-4 border-t border-white/10 pt-6"><div class="w-10 h-10 rounded-full bg-blue-500 shadow-[0_0_15px_#3b82f6]"></div><h4 class="font-bold text-sm tracking-widest uppercase text-white">An** W*******</h4></div>
+            </div>
+            <div class="w-[380px] glass-card p-8 rounded-2xl mx-4 flex flex-col justify-between">
+                <p class="text-gray-400 italic mb-8">"LOA Digital sistemnya stabil banget. Memudahkan proses verifikasi naskah secara otomatis."</p>
+                <div class="flex items-center gap-4 border-t border-white/10 pt-6"><div class="w-10 h-10 rounded-full bg-pink-500 shadow-[0_0_15px_#ec4899]"></div><h4 class="font-bold text-sm tracking-widest uppercase text-white">Siti K*******</h4></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="w-full py-12 overflow-hidden border-y border-white/5 bg-black/50">
+    <div class="animate-marquee font-cyber text-5xl md:text-7xl font-bold opacity-10 uppercase">
+        <span class="mx-8">STRATEGIC INVESTOR &bull;</span><span class="mx-8">FULL STACK DEVELOPER &bull;</span><span class="mx-8">AI IMPLEMENTATION &bull;</span><span class="mx-8">STRATEGIC INVESTOR &bull;</span>
+    </div>
+</div>
+
+<footer id="contact" class="py-24 px-6 text-center">
+    <div data-aos="fade-up">
+        <h2 class="text-3xl font-cyber mb-10 tracking-widest uppercase">Connect with System</h2>
+        <div class="flex justify-center gap-10 mb-12 flex-wrap">
+            <a href="https://instagram.com/falq_aj" target="_blank" class="text-gray-500 hover:text-blue-500 transition-all font-bold">INSTAGRAM</a>
+            <a href="https://x.com/falq26" target="_blank" class="text-gray-500 hover:text-blue-500 transition-all font-bold">TWITTER / X</a>
+            <a href="mailto:faliqajrunwidriadi@gmail.com" class="text-gray-500 hover:text-blue-500 transition-all font-bold">EMAIL</a>
+        </div>
+        <p class="text-gray-700 text-[10px] tracking-[0.5em] uppercase font-cyber italic">&copy; 2024 Faliq Ajrun Widriadi &middot; QUALITY OVER COST</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded',()=>{
+        AOS.init({once:true,duration:1000});
+        new Typed('#typing-text', {
+            strings: ['FULL STACK DEVELOPER', 'STRATEGIC INVESTOR', 'SCIENTIFIC PUBLISHER', 'AI IMPLEMENTER'],
+            typeSpeed: 50, backSpeed: 30, loop: true, backDelay: 2000
+        });
+    });
+</script>
+</body>
+</html>
+
